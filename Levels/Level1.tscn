@@ -13,9 +13,6 @@ position = Vector2( 479.813, 165.561 )
 
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2( 486.33, 453.572 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite" type="Sprite" parent="Floor"]
 scale = Vector2( 2, 1 )
@@ -23,3 +20,44 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 shape = SubResource( 1 )
+
+[node name="Floor2" type="StaticBody2D" parent="."]
+position = Vector2( -330.822, 224.59 )
+
+[node name="Sprite" type="Sprite" parent="Floor2"]
+scale = Vector2( 2, 1 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2"]
+shape = SubResource( 1 )
+
+[node name="Floor3" type="StaticBody2D" parent="."]
+position = Vector2( 944.294, 628.676 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Floor3"]
+scale = Vector2( 2, 1 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor3"]
+shape = SubResource( 1 )
+
+[node name="Floor4" type="StaticBody2D" parent="."]
+position = Vector2( 1640.22, 354.795 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Floor4"]
+scale = Vector2( 2, 1 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor4"]
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 500.435, 296.665 )
+current = true
+zoom = Vector2( 3, 3 )
