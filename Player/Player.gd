@@ -6,6 +6,8 @@ const GRAVITY = 300
 const UP = Vector2(0,-1) #used to tell this is up or down
 const JUMP_SPEED = 4000
 
+signal  animate
+
 func _physics_process(delta): #for processing every frame. delta is time
 	#vel.y += GRAVITY #BUT putting it increases every frame! not while falling
 	#so we use apply gravity function
@@ -23,6 +25,8 @@ func _physics_process(delta): #for processing every frame. delta is time
 func apply_gravity():
 	if is_on_floor(): #after defining up. see if it's on floor
 		vel.y = 0
+	elif is_on_ceiling():
+		vel.y = 1
 	else:
 		vel.y += GRAVITY
 		
@@ -43,15 +47,25 @@ func move():
 		vel.x=0
 
 func animate():
-	#animatedSprite - > frame -> spriteframe -> click again to get animator!
-	if vel.y<0:
-		$AnimatedSprite.play("jump")	 #play the jump animation
-	elif vel.x>0:
-		$AnimatedSprite.play("walk_right")
-		$AnimatedSprite.flip_h = false
-	elif vel.x<0:
-		$AnimatedSprite.play("walk_left")
-		$AnimatedSprite.flip_h = true
-	else: 
-		$AnimatedSprite.play("idle")
 	
+	emit_signal("animate", vel)
+	
+#	#animatedSprite - > frame -> spriteframe -> click again to get animator!
+#	if vel.y<0:
+#		$PlayerAnimation.play("jump")	 #play the jump animation
+#	elif vel.x>0:
+#		$PlayerAnimation.play("walk_right")
+#		$PlayerAnimation.flip_h = false
+#	elif vel.x<0:
+#		$PlayerAnimation.play("walk_left")
+#		$PlayerAnimation.flip_h = true
+#	else: 
+#		$PlayerAnimation.play("idle")
+	
+
+
+
+
+
+
+
