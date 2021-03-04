@@ -6,8 +6,11 @@ const GRAVITY = 300
 const UP = Vector2(0,-1) #used to tell this is up or down
 const JUMP_SPEED = 4000
 const WORLD_LIMIT = 4000
-
+const BOOST_MULTIPLIER = 1.5
 var lives = 3
+
+#one way of adding variable. exporting. It'll givee an extra hud for tweaking the value
+#export var boost_speed = 2
 
 signal  animate
 
@@ -77,7 +80,7 @@ func gameover():
 func hurt():
 	position.y -= 10
 	yield(get_tree() , "idle_frame")
-	vel.y -= JUMP_SPEED + 2000 #shold work but doesn't as gravity goes zero on floor
+	vel.y -= JUMP_SPEED + 500 #shold work but doesn't as gravity goes zero on floor
 	
 #	$AudioStreamPlayer.stream = load("res://SFX/pain.ogg") #loading and playing game
 #	$AudioStreamPlayer.play()
@@ -87,6 +90,10 @@ func hurt():
 	if lives < 0:
 		gameover()
 
+func boost():
+	position.y -= 20
+	yield(get_tree() , "idle_frame")
+	vel.y -= JUMP_SPEED * BOOST_MULTIPLIER
 
 
 
