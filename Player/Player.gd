@@ -38,8 +38,10 @@ func apply_gravity():
 func jump():
 	if Input.is_action_pressed("jump") and is_on_floor(): #jump when pressed. and holding it won't work!
 		vel.y -= JUMP_SPEED
-		$AudioStreamPlayer.stream = load("res://SFX/jump1.ogg") #loading and playing game
-		$AudioStreamPlayer.play()
+#		$AudioStreamPlayer.stream = load("res://SFX/jump1.ogg") #loading and playing game
+#		$AudioStreamPlayer.play()
+		#we'll be using indiviual nodes instead
+		$JumpSfx.play()
 		
 func move():
 	#from project settings-> input map make left and right
@@ -77,8 +79,9 @@ func hurt():
 	yield(get_tree() , "idle_frame")
 	vel.y -= JUMP_SPEED + 2000 #shold work but doesn't as gravity goes zero on floor
 	
-	$AudioStreamPlayer.stream = load("res://SFX/pain.ogg") #loading and playing game
-	$AudioStreamPlayer.play()
+#	$AudioStreamPlayer.stream = load("res://SFX/pain.ogg") #loading and playing game
+#	$AudioStreamPlayer.play()
+	$HurtSfx.play()
 	
 	lives -= 1
 	if lives < 0:
