@@ -5,6 +5,9 @@ const SPEED = 1500 #a constant speed
 const GRAVITY = 300
 const UP = Vector2(0,-1) #used to tell this is up or down
 const JUMP_SPEED = 4000
+const WORLD_LIMIT = 4000
+
+var lives = 3
 
 signal  animate
 
@@ -23,6 +26,8 @@ func _physics_process(delta): #for processing every frame. delta is time
 	move_and_slide(vel , UP) #move and slide on surface by how much value given in the vector
 	
 func apply_gravity():
+	if position.y > WORLD_LIMIT:
+		gameover()
 	if is_on_floor(): #after defining up. see if it's on floor
 		vel.y = 0
 	elif is_on_ceiling():
@@ -33,6 +38,8 @@ func apply_gravity():
 func jump():
 	if Input.is_action_pressed("jump") and is_on_floor(): #jump when pressed. and holding it won't work!
 		vel.y -= JUMP_SPEED
+		$AudioStreamPlayer.stream = load("res://SFX/jump1.ogg") #loading and playing game
+		$AudioStreamPlayer.play()
 		
 func move():
 	#from project settings-> input map make left and right
@@ -62,6 +69,20 @@ func animate():
 #	else: 
 #		$PlayerAnimation.play("idle")
 	
+func gameover():
+	get_tree().change_scene("res://Levels/GameOver.tscn")
+	
+func hurt():
+	position.y -= 10
+	yield(get_tree() , "idle_frame")
+	vel.y -= JUMP_SPEED + 2000 #shold work but doesn't as gravity goes zero on floor
+	
+	$AudioStreamPlayer.stream = load("res://SFX/pain.ogg") #loading and playing game
+	$AudioStreamPlayer.play()
+	
+	lives -= 1
+	if lives < 0:
+		gameover()
 
 
 
