@@ -1,9 +1,10 @@
 extends Node2D
 
-var lives  = 3
+var lives  = 30
 
 func _ready():
 	add_to_group("gamestate")
+	update_lives()
 
 func hurt():
 	lives -= 1
@@ -14,7 +15,11 @@ func hurt():
 	if lives < 0:
 		gameover()
 	
+	update_lives()
+	
+func update_lives():
+	get_tree().call_group("GUI" , "update_lives", lives) #group method variable
+	
 func gameover():
 	get_tree().change_scene("res://Levels/GameOver.tscn")
-	
 	
