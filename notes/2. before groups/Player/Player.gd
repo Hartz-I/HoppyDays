@@ -7,6 +7,7 @@ const UP = Vector2(0,-1) #used to tell this is up or down
 const JUMP_SPEED = 4000
 const WORLD_LIMIT = 4000
 const BOOST_MULTIPLIER = 1.5
+var lives = 3
 
 #one way of adding variable. exporting. It'll givee an extra hud for tweaking the value
 #export var boost_speed = 2
@@ -29,7 +30,7 @@ func _physics_process(delta): #for processing every frame. delta is time
 	
 func apply_gravity():
 	if position.y > WORLD_LIMIT:
-		get_tree().call_group("gamestate" , "gameover")
+		gameover()
 	if is_on_floor(): #after defining up. see if it's on floor
 		vel.y = 0
 	elif is_on_ceiling():
@@ -73,12 +74,11 @@ func animate():
 #	else: 
 #		$PlayerAnimation.play("idle")
 	
-#func gameover():
-#	get_tree().change_scene("res://Levels/GameOver.tscn")
-#moved to gamestate
+func gameover():
+	get_tree().change_scene("res://Levels/GameOver.tscn")
 	
 func hurt():
-	position.y -= 1
+	position.y -= 10
 	yield(get_tree() , "idle_frame")
 	vel.y -= JUMP_SPEED + 500 #shold work but doesn't as gravity goes zero on floor
 	
@@ -86,9 +86,9 @@ func hurt():
 #	$AudioStreamPlayer.play()
 	$HurtSfx.play()
 	
-	
-#	if lives < 0:
-#		gameover()
+	lives -= 1
+	if lives < 0:
+		gameover()
 
 func boost():
 	position.y -= 20
