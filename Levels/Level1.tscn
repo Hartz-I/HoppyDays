@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/TileSet.tres" type="TileSet" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://GUI/GUI.tscn" type="PackedScene" id=7]
 [ext_resource path="res://GUI/GUI.gd" type="Script" id=8]
 [ext_resource path="res://Items/Coin.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Hazards/SpikeMan.tscn" type="PackedScene" id=10]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource( 6 )
@@ -22,15 +23,12 @@ position = Vector2( 1, 0 )
 tile_set = ExtResource( 2 )
 collision_layer = 4
 format = 1
-tile_data = PoolIntArray( -2948912, 3, 0, -2293560, 3, 0, -2162604, 6, 0, -1966004, 5, 0, -1572781, 5, 0, -1572672, 3, 0, -1376180, 5, 0, -1048492, 1, 0, -982971, 3, 0, -851783, 3, 0, -655285, 3, 0, -589729, 3, 0, -589710, 0, 0, -589672, 2, 0, -327634, 1, 0, -327543, 4, 0, -262042, 2, 0, -196519, 4, 0, -196485, 1, 0, -130905, 2, 0, -130900, 2, 0, -130895, 2, 0, -65509, 2, 0, -65476, 2, 0, -65389, 4, 0, 65622, 1, 0, 131083, 1, 0, 131090, 1, 0, 131169, 2, 0, 262216, 1, 0, 262273, 0, 0, 327760, 4, 0, 458741, 2, 0, 393252, 2, 0, 393360, 3, 0, 655360, 0, 0, 655497, 2, 0, 917492, 2, 0, 917511, 2, 0, 917579, 0, 0, 1310708, 0, 0, 1245187, 0, 0, 1245204, 0, 0, 1245219, 0, 0, 1245233, 0, 0, 1245250, 0, 0, 1310826, 0, 0, 1376345, 6, 0, 1376378, 0, 0, 1376395, 0, 0, 1441948, 0, 0 )
+tile_data = PoolIntArray( -2948912, 3, 0, -2293560, 3, 0, -2162604, 6, 0, -1966004, 5, 0, -1572781, 5, 0, -1572672, 3, 0, -1376180, 5, 0, -1048492, 1, 0, -982974, 0, 0, -851783, 3, 0, -655285, 3, 0, -589729, 3, 0, -589710, 0, 0, -589672, 2, 0, -327634, 0, 0, -327543, 4, 0, -262042, 2, 0, -196519, 4, 0, -196485, 1, 0, -130905, 2, 0, -130900, 2, 0, -130895, 2, 0, -65509, 2, 0, -65476, 2, 0, -65389, 4, 0, 65622, 1, 0, 131083, 1, 0, 131090, 1, 0, 131169, 2, 0, 262216, 1, 0, 262273, 0, 0, 327760, 4, 0, 458741, 2, 0, 393252, 2, 0, 393360, 3, 0, 655360, 0, 0, 655497, 2, 0, 917492, 2, 0, 917511, 2, 0, 917579, 0, 0, 1310708, 0, 0, 1245187, 0, 0, 1245204, 0, 0, 1245219, 0, 0, 1245233, 0, 0, 1245250, 0, 0, 1310826, 0, 0, 1376345, 6, 0, 1376378, 0, 0, 1376395, 0, 0, 1441948, 0, 0 )
 
 [node name="Hazards" type="Node" parent="."]
 
 [node name="SpikesTop" parent="Hazards" instance=ExtResource( 3 )]
 position = Vector2( 727.691, 874.486 )
-
-[node name="SpikesTop2" parent="Hazards" instance=ExtResource( 3 )]
-position = Vector2( 2026.56, -92.7037 )
 
 [node name="SpikesTop3" parent="Hazards" instance=ExtResource( 3 )]
 position = Vector2( 2380.24, 361.026 )
@@ -53,8 +51,28 @@ position = Vector2( 8000.2, -228.035 )
 [node name="SpikesTop9" parent="Hazards" instance=ExtResource( 3 )]
 position = Vector2( 9042.01, -343.363 )
 
-[node name="SpikesTop10" parent="Hazards" instance=ExtResource( 3 )]
-position = Vector2( 9784.62, -599.865 )
+[node name="SpikeMen" type="Node" parent="."]
+
+[node name="SpikeMan" parent="SpikeMen" instance=ExtResource( 10 )]
+position = Vector2( 1912, -136 )
+
+[node name="SpikeMan2" parent="SpikeMen" instance=ExtResource( 10 )]
+position = Vector2( 4024, -136 )
+
+[node name="SpikeMan3" parent="SpikeMen" instance=ExtResource( 10 )]
+position = Vector2( 4408, -1032 )
+
+[node name="SpikeMan4" parent="SpikeMen" instance=ExtResource( 10 )]
+position = Vector2( 6712, -328 )
+
+[node name="SpikeMan5" parent="SpikeMen" instance=ExtResource( 10 )]
+position = Vector2( 8944, 568 )
+
+[node name="SpikeMan6" parent="SpikeMen" instance=ExtResource( 10 )]
+position = Vector2( 9912, -648 )
+
+[node name="SpikeMan7" parent="SpikeMen" instance=ExtResource( 10 )]
+position = Vector2( 10984, -200 )
 
 [node name="Coins" type="Node" parent="."]
 
@@ -77,7 +95,7 @@ position = Vector2( 1709.06, -174.736 )
 position = Vector2( 1480.48, -158.862 )
 
 [node name="Coin8" parent="Coins" instance=ExtResource( 9 )]
-position = Vector2( 1909.08, -111.24 )
+position = Vector2( 1832, -112 )
 
 [node name="Coin10" parent="Coins" instance=ExtResource( 9 )]
 position = Vector2( 2271, -209.659 )

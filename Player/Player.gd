@@ -91,9 +91,9 @@ func hurt():
 #		gameover()
 
 func boost():
-	position.y -= 1
+	position.y -= 20
 	yield(get_tree() , "idle_frame")
-	vel.y -= JUMP_SPEED * BOOST_MULTIPLIER
+	vel.y = -JUMP_SPEED * BOOST_MULTIPLIER
 
 
 
