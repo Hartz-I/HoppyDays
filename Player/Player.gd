@@ -30,7 +30,7 @@ func _physics_process(delta): #for processing every frame. delta is time
 func apply_gravity():
 	if position.y > WORLD_LIMIT:
 		get_tree().call_group("gamestate" , "gameover")
-	if is_on_floor(): #after defining up. see if it's on floor
+	if is_on_floor() and vel.y > 0: #after defining up. see if it's on floor
 		vel.y = 0
 	elif is_on_ceiling():
 		vel.y = 1
@@ -80,7 +80,7 @@ func animate():
 func hurt():
 	position.y -= 1
 	yield(get_tree() , "idle_frame")
-	vel.y -= JUMP_SPEED + 500 #should work but doesn't as gravity goes zero on floor
+	vel.y = -JUMP_SPEED + 500 #should work but doesn't as gravity goes zero on floor
 	
 #	$AudioStreamPlayer.stream = load("res://SFX/pain.ogg") #loading and playing game
 #	$AudioStreamPlayer.play()
@@ -91,7 +91,7 @@ func hurt():
 #		gameover()
 
 func boost():
-	position.y -= 20
+	position.y -= 1
 	yield(get_tree() , "idle_frame")
 	vel.y -= JUMP_SPEED * BOOST_MULTIPLIER
 
