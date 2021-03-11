@@ -80,7 +80,7 @@ func animate():
 func hurt():
 	position.y -= 1
 	yield(get_tree() , "idle_frame")
-	vel.y = -JUMP_SPEED + 500 #should work but doesn't as gravity goes zero on floor
+	vel.y = -JUMP_SPEED - 500 #should work but doesn't as gravity goes zero on floor
 	
 #	$AudioStreamPlayer.stream = load("res://SFX/pain.ogg") #loading and playing game
 #	$AudioStreamPlayer.play()

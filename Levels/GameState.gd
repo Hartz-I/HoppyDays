@@ -37,3 +37,6 @@ func life_up():
 func gameover():
 	get_tree().change_scene("res://Levels/GameOver.tscn")
 	
+func victory():
+	get_tree().change_scene("res://Levels/Victory.tscn")
+	

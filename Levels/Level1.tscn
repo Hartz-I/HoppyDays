@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/TileSet.tres" type="TileSet" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://GUI/GUI.gd" type="Script" id=8]
 [ext_resource path="res://Items/Coin.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Hazards/SpikeMan.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Hazards/Cloud.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Items/Portal.tscn" type="PackedScene" id=12]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource( 6 )
@@ -389,3 +391,21 @@ autoplay = true
 
 [node name="GUI" parent="." instance=ExtResource( 7 )]
 script = ExtResource( 8 )
+
+[node name="Clouds" type="Node" parent="."]
+
+[node name="Cloud" parent="Clouds" instance=ExtResource( 11 )]
+position = Vector2( 1024, -568 )
+
+[node name="Cloud2" parent="Clouds" instance=ExtResource( 11 )]
+position = Vector2( 3312, -1104 )
+
+[node name="Cloud3" parent="Clouds" instance=ExtResource( 11 )]
+position = Vector2( 5360, -2944 )
+
+[node name="Portal" parent="." instance=ExtResource( 12 )]
+position = Vector2( 13400, -2952 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
